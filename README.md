@@ -1,14 +1,16 @@
 # @pieh/gatsby-type-gen
 
-Usage:
+## Usage:
 
-Use following command in your gatsby project
+Use following command in your Gatsby project
 
 ```
 npx @pieh/gatsby-type-gen
 ```
 
-It will:
+> **Note:** This is currently proof of concept. There are no sanity checks,  so make sure you use this in Gatsby project directory - otherwise it will actually try to run Gatsby even if it shouldn't - it should crash saying `gatsby` module not found, but no guarantee. It also doesn't have any error handling so confusing errors are very real possibility.
+
+## How it works:
 
 - run part of gatsby bootstrap:
   - sourcing and transforming nodes
@@ -23,9 +25,13 @@ It will:
   - for typescript projects
   - for js projects (if you use VS code - this might work with other editors/IDEs, but at least the way I know how to use this in vscode doesn't work in WebStorm)
 
-Example output:
+## Known issues / limitations:
 
-- console output:
+- Date fields are typed as `any`. That's because Gatsby create custom GraphQL scalar type for `Date` - which is really same as `string`, only description is added ( https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby/src/schema/types/type-date.js ). I'm pretty sure we can add custom handling of that, it just isn't priority.
+
+## Example output:
+
+- ### Console output:
 
   ```
   ➜  www git:(master) ✗ npx @pieh/gatsby-type-gen
@@ -199,7 +205,7 @@ Example output:
   /** @type { import("../../query-result-types/usersMisiekDevGatsbyWwwSrcPagesDocsSsrApisJs2511557810").usersMisiekDevGatsbyWwwSrcPagesDocsSsrApisJs2511557810 } */
   ```
 
-- type definition files:
+- ### Type definition files:
 
   ```typescript
   /* tslint:disable */
