@@ -29,7 +29,11 @@ const { compileToIR } = require("apollo-codegen-core/lib/compiler")
 const getQueries = async () => {
   console.log("Generating types")
 
-  const { schema: gatsbySchema, components } = store.getState()
+  const {
+    schema: gatsbySchema,
+    components,
+    staticQueryComponents,
+  } = store.getState()
 
   // I hate this - but gatsby graphql module is different than from apollo-codegen-core compiler so
   // serialize and deserialize to avoid "different realm" errors
@@ -38,6 +42,9 @@ const getQueries = async () => {
 
   const sources = []
   components.forEach(componentMeta => {
+    sources.push(new Source(componentMeta.query, componentMeta.componentPath))
+  })
+  staticQueryComponents.forEach(componentMeta => {
     sources.push(new Source(componentMeta.query, componentMeta.componentPath))
   })
 

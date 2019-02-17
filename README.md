@@ -13,7 +13,7 @@ It will:
 - run part of gatsby bootstrap:
   - sourcing and transforming nodes
   - creating page objects (not actual html pages)
-  - extract queries (right now just page queries)
+  - extract queries
   - create up to date graphql schema
   - stop there (it won't run queries)
 - grab extracted queries (transformed by relay-compiler, so fragments are covered)
