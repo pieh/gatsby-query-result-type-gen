@@ -29,6 +29,11 @@ npx @pieh/gatsby-type-gen
 
 - Date fields are typed as `any`. That's because Gatsby create custom GraphQL scalar type for `Date` - which is really same as `string`, only description is added ( https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby/src/schema/types/type-date.js ). I'm pretty sure we can add custom handling of that, it just isn't priority.
 
+## Demo:
+
+- VS Code + JsDoc annotations - https://www.youtube.com/watch?v=jrsEZp2JwIk&feature=youtu.be
+- Using typescript: https://github.com/pieh/type-gen-expirement
+
 ## Example output:
 
 - ### Console output:
